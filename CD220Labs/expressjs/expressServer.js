@@ -16,6 +16,18 @@ app.post("/login/:name",(req,res)=>{
     res.send(req.params.name + ", You are logged in!")
 })
 
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+app.get("/fetchMonth/:num",(req,res)=>{
+    let num = parseInt(req.params.num);
+    if(num <1 || num >12) {
+        res.send("Not a valid month number")
+    } else {
+        res.send(months[num-1])
+    }
+
+})
+
 app.get("/:name",(req,res)=>{
     res.send("Hello "+req.params.name)
 })
